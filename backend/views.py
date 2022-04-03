@@ -4,11 +4,19 @@ from rest_framework.permissions import IsAuthenticated
 
 from backend.models import Profile, Post
 from backend.permissions import IsOwnerOrReadOnly
-from backend.serializer import PostSerializer
+from backend.serializer import ProfileSerializer, PostSerializer
 
 
+class ProfileViewSet(ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
 
-class ReportViewSet(ModelViewSet):
+    permission_classes = [IsOwnerOrReadOnly]
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 

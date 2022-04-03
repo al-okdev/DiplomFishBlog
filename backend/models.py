@@ -15,7 +15,7 @@ class Profile(models.Model):
     type = models.CharField(verbose_name='Тип пользователя', choices=USER_TYPE, max_length=25, default='simple')
     date_add = models.DateTimeField(auto_now_add=True)
     date_upd = models.DateTimeField(auto_now=True)
-    date_of_birth = models.DateTimeField(null=True)
+    date_of_birth = models.DateField(null=True)
     photo = models.ImageField(upload_to=get_photo.get_upload_to_profile, blank=True, null=True)
 
 class Post(models.Model):

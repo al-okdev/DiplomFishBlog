@@ -18,15 +18,16 @@ from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
 
-from backend.views import ReportViewSet
+from backend.views import ProfileViewSet, PostViewSet
 
 r = DefaultRouter()
-r.register('post', ReportViewSet)
+r.register('api_v1/profile', ProfileViewSet) #<int:profile>/
+r.register('api_v1/posts', PostViewSet)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include('backend.urls')),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
+    path('api_v1/auth/', include('backend.urls')),
+    path('api_v1/auth/', include('djoser.urls')),
+    path('api_v1/auth/', include('djoser.urls.authtoken')),
 ] + r.urls

@@ -1,6 +1,67 @@
-GET http://127.0.0.1:8000/post/
+### Регистрация
+POST http://127.0.0.1:8000/api_v1/auth/users/
+Content-Type: application/json
 
-###
+{
+  "email": "tets2@test.ru",
+  "username": "djoser2",
+  "password": "1A2b3c4d5E6f7G",
+  "first_name": "Имя"
+
+}
+
+### авторизуемся и получаем токен
+POST http://127.0.0.1:8000/api_v1/auth/token/login/
+Content-Type: application/json
+
+{
+  "username": "djoser1",
+  "password": "1A2b3c4d5E6f7G"
+}
+
+### Информация о пользователе
+GET http://127.0.0.1:8000/api_v1/auth/users/me/
+Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
+
+### Обновление Информация о пользователе
+PUT http://127.0.0.1:8000/api_v1/auth/users/me/
+Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
+Content-Type: application/json
+
+{
+  "email": "tetst@test.ru",
+  "username": "djoser231",
+  "password": "1A2b3c4d5E6f7G",
+  "first_name": "Имя"
+}
+
+### Выход
+POST http://127.0.0.1:8000/api_v1/auth/token/logout/
+Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
+
+
+
+### Просмотр доп. профиля
+GET http://127.0.0.1:8000/api_v1/profile/
+
+### Обновление доп. профиля
+PUT http://127.0.0.1:8000/api_v1/profile/16/
+Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
+Content-Type: application/json
+
+{
+  "date_of_birth": "2022-04-05"
+}
+
+
+
+
+
+
+### Список постов
+GET http://127.0.0.1:8000/api_v1/posts/
+
+### Создание поста
 
 POST http://127.0.0.1:8000/post/
 Content-Type: application/json
@@ -11,38 +72,13 @@ Authorization: Token 173cd92379cfa3f09c46d08956675e0fdddb8a1d
   "text": "Описание объявления"
 }
 
-###
+### Удаление поста
 
 DELETE http://127.0.0.1:8000/post/6/
 Authorization: Token 173cd92379cfa3f09c46d08956675e0fdddb8a1d
 
-###
+### Информация о посте
 
 GET http://127.0.0.1:8000/post/4/
 
 
-### Регистрация
-POST http://127.0.0.1:8000/auth/users/
-Content-Type: application/json
-
-{
-  "username": "djoser111412123",
-  "password": "1A2b3c4d5E6f7G"
-}
-
-### авторизуемся и получаем токен
-POST http://127.0.0.1:8000/auth/token/login/
-Content-Type: application/json
-
-{
-  "username": "djoser1",
-  "password": "1A2b3c4d5E6f7G"
-}
-
-### Информация о пользователе
-GET http://127.0.0.1:8000/auth/users/me/
-Authorization: Token 173cd92379cfa3f09c46d08956675e0fdddb8a1d
-
-### Выход
-POST http://127.0.0.1:8000/auth/token/logout/
-Authorization: Token ad6904aa1b9c053b084646532139d466f1a1494d
