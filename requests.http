@@ -1,0 +1,48 @@
+GET http://127.0.0.1:8000/post/
+
+###
+
+POST http://127.0.0.1:8000/post/
+Content-Type: application/json
+Authorization: Token 173cd92379cfa3f09c46d08956675e0fdddb8a1d
+
+{
+  "title": "Объявление 3",
+  "text": "Описание объявления"
+}
+
+###
+
+DELETE http://127.0.0.1:8000/post/6/
+Authorization: Token 173cd92379cfa3f09c46d08956675e0fdddb8a1d
+
+###
+
+GET http://127.0.0.1:8000/post/4/
+
+
+### Регистрация
+POST http://127.0.0.1:8000/auth/users/
+Content-Type: application/json
+
+{
+  "username": "djoser111412123",
+  "password": "1A2b3c4d5E6f7G"
+}
+
+### авторизуемся и получаем токен
+POST http://127.0.0.1:8000/auth/token/login/
+Content-Type: application/json
+
+{
+  "username": "djoser1",
+  "password": "1A2b3c4d5E6f7G"
+}
+
+### Информация о пользователе
+GET http://127.0.0.1:8000/auth/users/me/
+Authorization: Token 173cd92379cfa3f09c46d08956675e0fdddb8a1d
+
+### Выход
+POST http://127.0.0.1:8000/auth/token/logout/
+Authorization: Token ad6904aa1b9c053b084646532139d466f1a1494d
