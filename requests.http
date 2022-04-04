@@ -43,6 +43,11 @@ Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
 
 ### Просмотр доп. профиля
 GET http://127.0.0.1:8000/api_v1/profile/
+Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
+
+### Просмотр доп. профилей
+GET http://127.0.0.1:8000/api_v1/profile/16/
+Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
 
 ### Обновление доп. профиля
 PUT http://127.0.0.1:8000/api_v1/profile/16/
@@ -50,7 +55,7 @@ Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
 Content-Type: application/json
 
 {
-  "date_of_birth": "2022-04-05"
+  "date_of_birth": "2022-04-07"
 }
 
 

@@ -1,6 +1,9 @@
 from rest_framework.permissions import BasePermission
 
 # Проверка прав пользователя на то или иное действие
+from backend.models import Profile
+
+
 class IsOwnerOrReadOnly(BasePermission):
 
     # has_object_permission - метод для работы с конкретным объектом
@@ -11,4 +14,11 @@ class IsOwnerOrReadOnly(BasePermission):
             return True
 
         # возвращаем false или true в зависимости от владельца объекта
+        return request.user == obj.user
+
+
+class IsOwnerOrReadOnlyProfile(BasePermission):
+
+    # has_object_permission - метод для работы с конкретным объектом
+    def has_object_permission(self, request, view, obj):
         return request.user == obj.user
