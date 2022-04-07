@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'fishblog_db',
-        'USER': 'postgres',
-        'PASSWORD': '123456'
+        'USER': 'user_db',
+        'PASSWORD': 'password_db'
     }
 }
 

@@ -57,7 +57,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ['user', 'title', 'description', 'status', 'date_add', 'date_upd', 'photo', 'video']
+        fields = ['id', 'user', 'title', 'description', 'status', 'date_add', 'date_upd', 'photo', 'video']
 
         # поля только для чтения
         read_only_fields = ['user']

@@ -27,7 +27,7 @@ class PostViewSet(ModelViewSet):
     serializer_class = PostSerializer
 
     # Проверка прав, IsAuthenticated - проверка аунтификации, IsOwnerOrReadOnly - проверка прав действия с объектом
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
 
     # можем переопределять методы, например что бы сопоставть поля
     def perform_create(self, serializer):

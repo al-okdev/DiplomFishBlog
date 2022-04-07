@@ -6,7 +6,7 @@ Content-Type: application/json
   "email": "tets2@test.ru",
   "username": "djoser2",
   "password": "1A2b3c4d5E6f7G",
-  "first_name": "Имя"
+  "first_name": "Имя1"
 
 }
 
@@ -15,7 +15,7 @@ POST http://127.0.0.1:8000/api_v1/auth/token/login/
 Content-Type: application/json
 
 {
-  "username": "djoser1",
+  "username": "djoser2",
   "password": "1A2b3c4d5E6f7G"
 }
 
@@ -37,21 +37,21 @@ Content-Type: application/json
 
 ### Выход
 POST http://127.0.0.1:8000/api_v1/auth/token/logout/
-Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
+Authorization: Token 952eaffc7e0dfba23a891bc845b59069c70cd7ba
 
 
 
 ### Просмотр доп. профиля
 GET http://127.0.0.1:8000/api_v1/profile/
-Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
+Authorization: Token 952eaffc7e0dfba23a891bc845b59069c70cd7ba
 
 ### Просмотр доп. профилей
-GET http://127.0.0.1:8000/api_v1/profile/16/
-Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
+GET http://127.0.0.1:8000/api_v1/profile/3/
+Authorization: Token 952eaffc7e0dfba23a891bc845b59069c70cd7ba
 
 ### Обновление доп. профиля
-PUT http://127.0.0.1:8000/api_v1/profile/16/
-Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
+PUT http://127.0.0.1:8000/api_v1/profile/3/
+Authorization: Token 952eaffc7e0dfba23a891bc845b59069c70cd7ba
 Content-Type: application/json
 
 {
@@ -65,25 +65,36 @@ Content-Type: application/json
 
 ### Список постов
 GET http://127.0.0.1:8000/api_v1/posts/
+#Authorization: Token eb284d163d18dc1e8ba8d715987495fcc7635346
+Authorization: Token 3f1c6cc8d27588f7d92582d434c3a5153d825621
 
 ### Создание поста
-
-POST http://127.0.0.1:8000/post/
+POST http://127.0.0.1:8000/api_v1/posts/
 Content-Type: application/json
-Authorization: Token 173cd92379cfa3f09c46d08956675e0fdddb8a1d
+#Authorization: Token eb284d163d18dc1e8ba8d715987495fcc7635346
+Authorization: Token 3f1c6cc8d27588f7d92582d434c3a5153d825621
 
 {
-  "title": "Объявление 3",
-  "text": "Описание объявления"
+  "title": "Post2",
+  "description": "Description2"
 }
 
 ### Удаление поста
-
-DELETE http://127.0.0.1:8000/post/6/
-Authorization: Token 173cd92379cfa3f09c46d08956675e0fdddb8a1d
+DELETE http://127.0.0.1:8000/api_v1/posts/4/
+Authorization: Token eb284d163d18dc1e8ba8d715987495fcc7635346
+#Authorization: Token 3f1c6cc8d27588f7d92582d434c3a5153d825621
 
 ### Информация о посте
+GET http://127.0.0.1:8000/api_v1/posts/3/
+#Authorization: Token eb284d163d18dc1e8ba8d715987495fcc7635346
+Authorization: Token 3f1c6cc8d27588f7d92582d434c3a5153d825621
 
-GET http://127.0.0.1:8000/post/4/
+### Обновление поста
+PUT http://127.0.0.1:8000/api_v1/posts/3/
+Authorization: Token 3f1c6cc8d27588f7d92582d434c3a5153d825621
+Content-Type: application/json
 
-
+{
+  "title": "Post11",
+  "description": "Description11"
+}
