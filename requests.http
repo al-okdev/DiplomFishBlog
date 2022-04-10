@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ### Информация о пользователе
 GET http://127.0.0.1:8000/api_v1/auth/users/me/
-Authorization: Token 2f122a9ba9135a5959333e61ddf388c4a7dcac0f
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
 
 ### Обновление Информация о пользователе
 PUT http://127.0.0.1:8000/api_v1/auth/users/me/
@@ -66,17 +66,18 @@ Content-Type: application/json
 ### Список постов
 GET http://127.0.0.1:8000/api_v1/posts/
 #Authorization: Token eb284d163d18dc1e8ba8d715987495fcc7635346
-Authorization: Token 3f1c6cc8d27588f7d92582d434c3a5153d825621
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
 
 ### Создание поста
 POST http://127.0.0.1:8000/api_v1/posts/
 Content-Type: application/json
 #Authorization: Token eb284d163d18dc1e8ba8d715987495fcc7635346
-Authorization: Token 3f1c6cc8d27588f7d92582d434c3a5153d825621
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
 
 {
-  "title": "Post2",
-  "description": "Description2"
+  "title": "Post3",
+  "description": "Description3",
+  "price": 1500
 }
 
 ### Удаление поста
@@ -97,4 +98,40 @@ Content-Type: application/json
 {
   "title": "Post11",
   "description": "Description11"
+}
+
+
+
+
+
+### Список комментариев
+GET http://127.0.0.1:8000/api_v1/comment/
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
+
+### Создание комментариев
+POST http://127.0.0.1:8000/api_v1/comment/
+Content-Type: application/json
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
+
+{
+  "post": 5,
+  "description": "Description text2"
+}
+
+### Удаление комментариея
+DELETE http://127.0.0.1:8000/api_v1/comment/21/
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
+
+### Информация о комментарии
+GET http://127.0.0.1:8000/api_v1/comment/21/
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
+
+### Обновление комментариея !!!Обновлять без указания поста
+PUT http://127.0.0.1:8000/api_v1/comment/21/
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
+Content-Type: application/json
+
+{
+  "post": 5,
+  "description": "Description11__"
 }

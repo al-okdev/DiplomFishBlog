@@ -14,6 +14,14 @@ STATUS = (
     (1, 'Активен')
 )
 
+POST_TYPE = (
+    ('report', 'Отчет'),
+    ('informing', 'Информирование'),
+    ('article', 'Статья'),
+    ('service', 'Услуга'),
+    ('sale', 'Продажа')
+)
+
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -23,18 +31,40 @@ class Profile(models.Model):
     date_of_birth = models.DateField(null=True)
     photo = models.ImageField(upload_to=get_photo.get_upload_to_profile, blank=True, null=True)
 
+
 class PhotoPost(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to=get_photo.get_upload_to_post, blank=True, null=True)
+
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.TextField(max_length=255)
     description = models.TextField()
     status = models.IntegerField(verbose_name='Статус', choices=STATUS, default=1)
+    type = models.CharField(verbose_name='Тип поста', choices=POST_TYPE, max_length=25, default='report')
+    price = models.IntegerField(verbose_name='Цена', blank=True, null=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_upd = models.DateTimeField(auto_now=True)
     photo = models.ManyToManyField(PhotoPost, blank=True)
     video = models.CharField(max_length=255, blank=True)
 
 
+class CommentPost(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    description = models.TextField()
+    status = models.IntegerField(verbose_name='Статус', choices=STATUS, default=1)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_upd = models.DateTimeField(auto_now=True)
+    photo = models.ImageField(upload_to=get_photo.get_upload_to_comment, blank=True, null=True)
+
+
+class ReplyCommentPost(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.ForeignKey(CommentPost, on_delete=models.CASCADE)
+    description = models.TextField()
+    status = models.IntegerField(verbose_name='Статус', choices=STATUS, default=1)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_upd = models.DateTimeField(auto_now=True)
+    photo = models.ImageField(upload_to=get_photo.get_upload_to_replycomment, blank=True, null=True)
