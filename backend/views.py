@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from rest_framework.exceptions import ValidationError
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 
@@ -45,6 +47,19 @@ class CommentPostViewSet(ModelViewSet):
     # можем переопределять методы, например что бы сопоставть поля
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    # Запрет изменения поста и разрешение частичного обновления модели
+    def update(self, request, *args, **kwargs):
+        if request.data.get('post'):
+            raise ValidationError('Нельзя изменять пост')
+
+        partial = True
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+
+        return Response(serializer.data)
 
 
 class ReplyCommentViewSet(ModelViewSet):
