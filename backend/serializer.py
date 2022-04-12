@@ -54,15 +54,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         read_only_fields = ['user', 'type']
 
 
-class PostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Post
-        fields = ['id', 'user', 'title', 'description', 'price', 'status', 'date_add', 'date_upd', 'photo', 'video']
-
-        # поля только для чтения
-        read_only_fields = ['id', 'user']
-
-
 class CommentPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommentPost
@@ -70,6 +61,18 @@ class CommentPostSerializer(serializers.ModelSerializer):
 
         # поля только для чтения
         read_only_fields = ['id', 'user']
+
+class PostSerializer(serializers.ModelSerializer):
+    comment = CommentPostSerializer(many=True, read_only=True)
+    class Meta:
+        model = Post
+        fields = ['id', 'user', 'title', 'description', 'price', 'status', 'date_add', 'date_upd', 'photo', 'video', 'comment']
+
+        # поля только для чтения
+        read_only_fields = ['id', 'user']
+
+
+
 
 
 class ReplyCommentPostSerializer(serializers.ModelSerializer):
