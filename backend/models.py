@@ -62,7 +62,7 @@ class CommentPost(models.Model):
 
 class ReplyCommentPost(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    comment = models.ForeignKey(CommentPost, on_delete=models.CASCADE)
+    comment = models.ForeignKey(CommentPost, related_name='replycomment', on_delete=models.CASCADE)
     description = models.TextField()
     status = models.IntegerField(verbose_name='Статус', choices=STATUS, default=1)
     date_add = models.DateTimeField(auto_now_add=True)

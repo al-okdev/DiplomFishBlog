@@ -86,9 +86,9 @@ Authorization: Token eb284d163d18dc1e8ba8d715987495fcc7635346
 #Authorization: Token 3f1c6cc8d27588f7d92582d434c3a5153d825621
 
 ### Информация о посте
-GET http://127.0.0.1:8000/api_v1/posts/3/
+GET http://127.0.0.1:8000/api_v1/posts/5/
 #Authorization: Token eb284d163d18dc1e8ba8d715987495fcc7635346
-Authorization: Token 3f1c6cc8d27588f7d92582d434c3a5153d825621
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
 
 ### Обновление поста
 PUT http://127.0.0.1:8000/api_v1/posts/3/
@@ -115,7 +115,7 @@ Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
 
 {
   "post": 5,
-  "description": "Description text2"
+  "description": "Comment5"
 }
 
 ### Удаление комментариея
@@ -132,6 +132,42 @@ Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
 Content-Type: application/json
 
 {
-  "post": 5,
-  "description": "Description11__"
+
+  "description": "Description11__11"
+}
+
+
+
+
+
+
+### Список ответов
+GET http://127.0.0.1:8000/api_v1/replycomment/
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
+
+### Создание ответа
+POST http://127.0.0.1:8000/api_v1/replycomment/
+Content-Type: application/json
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
+
+{
+  "comment": 23,
+  "description": "Comment3"
+}
+
+### Удаление ответа
+DELETE http://127.0.0.1:8000/api_v1/replycomment/5/
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
+
+### Информация об ответе
+GET http://127.0.0.1:8000/api_v1/replycomment/4/
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
+
+### Обновление ответа
+PUT http://127.0.0.1:8000/api_v1/replycomment/4/
+Authorization: Token 26d1168537ea6017048b4851c9d1c7a2f97040c2
+Content-Type: application/json
+
+{
+  "description": "Comment5_2"
 }

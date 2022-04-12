@@ -54,31 +54,30 @@ class ProfileSerializer(serializers.ModelSerializer):
         read_only_fields = ['user', 'type']
 
 
-class CommentPostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CommentPost
-        fields = ['id', 'user', 'post', 'description', 'status', 'date_add', 'date_upd', 'photo']
-
-        # поля только для чтения
-        read_only_fields = ['id', 'user']
-
-class PostSerializer(serializers.ModelSerializer):
-    comment = CommentPostSerializer(many=True, read_only=True)
-    class Meta:
-        model = Post
-        fields = ['id', 'user', 'title', 'description', 'price', 'status', 'date_add', 'date_upd', 'photo', 'video', 'comment']
-
-        # поля только для чтения
-        read_only_fields = ['id', 'user']
-
-
-
-
-
 class ReplyCommentPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReplyCommentPost
         fields = ['id', 'user', 'comment', 'description', 'status', 'date_add', 'date_upd', 'photo']
 
         # поля только для чтения
-        read_only_fields = ['id', 'user', 'comment']
+        read_only_fields = ['id', 'user']
+
+class CommentPostSerializer(serializers.ModelSerializer):
+    replycomment = ReplyCommentPostSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = CommentPost
+        fields = ['id', 'user', 'post', 'description', 'status', 'date_add', 'date_upd', 'photo', 'replycomment']
+
+        # поля только для чтения
+        read_only_fields = ['id', 'user']
+
+class PostSerializer(serializers.ModelSerializer):
+    comment = CommentPostSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Post
+        fields = ['id', 'user', 'title', 'description', 'price', 'status', 'date_add', 'date_upd', 'photo', 'video', 'comment']
+
+        # поля только для чтения
+        read_only_fields = ['id', 'user']

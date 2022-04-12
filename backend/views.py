@@ -72,3 +72,16 @@ class ReplyCommentViewSet(ModelViewSet):
     # можем переопределять методы, например что бы сопоставть поля
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    # Запрет изменения поста и разрешение частичного обновления модели
+    def update(self, request, *args, **kwargs):
+        if request.data.get('comment'):
+            raise ValidationError('Нельзя изменять id комментария')
+
+        partial = True
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+
+        return Response(serializer.data)
