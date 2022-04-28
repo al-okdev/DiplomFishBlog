@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.exceptions import ValidationError
 from rest_framework.validators import UniqueValidator
 
-from backend.models import Post, Profile, CommentPost, ReplyCommentPost
+from backend.models import Post, Profile, CommentPost, ReplyCommentPost, PhotoPost
 
 User = get_user_model()
 
@@ -72,8 +72,19 @@ class CommentPostSerializer(serializers.ModelSerializer):
         # поля только для чтения
         read_only_fields = ['id', 'user']
 
+
+class PhotoPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PhotoPost
+        fields = ['id', 'name', 'image']
+
+        # поля только для чтения
+        read_only_fields = ['id']
+
+
 class PostSerializer(serializers.ModelSerializer):
     comment = CommentPostSerializer(many=True, read_only=True)
+    photo = PhotoPostSerializer(many=True, read_only=True)
 
     class Meta:
         model = Post

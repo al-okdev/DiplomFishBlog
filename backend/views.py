@@ -4,9 +4,9 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 
-from backend.models import Profile, Post, CommentPost, ReplyCommentPost
+from backend.models import Profile, Post, CommentPost, ReplyCommentPost, PhotoPost
 from backend.permissions import IsOwnerOrReadOnly, IsOwnerOrReadOnlyProfile
-from backend.serializer import ProfileSerializer, PostSerializer, CommentPostSerializer, ReplyCommentPostSerializer
+from backend.serializer import ProfileSerializer, PostSerializer, CommentPostSerializer, ReplyCommentPostSerializer, PhotoPostSerializer
 
 
 class ProfileViewSet(ModelViewSet):
@@ -35,6 +35,11 @@ class PostViewSet(ModelViewSet):
     # можем переопределять методы, например что бы сопоставть поля
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+
+class PhotoPostViewSet(ModelViewSet):
+    queryset = PhotoPost.objects.all()
+    serializer_class = PhotoPostSerializer
 
 
 class CommentPostViewSet(ModelViewSet):
