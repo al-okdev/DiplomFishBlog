@@ -1,4 +1,5 @@
 from djoser.serializers import UserCreateSerializer
+from drf_writable_nested import WritableNestedModelSerializer
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from rest_framework.exceptions import ValidationError
@@ -82,9 +83,9 @@ class PhotoPostSerializer(serializers.ModelSerializer):
         read_only_fields = ['id']
 
 
-class PostSerializer(serializers.ModelSerializer):
+class PostSerializer(WritableNestedModelSerializer):
     comment = CommentPostSerializer(many=True, read_only=True)
-    photo = PhotoPostSerializer(many=True, read_only=True)
+    photo = PhotoPostSerializer(many=True)
 
     class Meta:
         model = Post
