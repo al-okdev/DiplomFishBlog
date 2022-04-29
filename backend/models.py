@@ -33,8 +33,8 @@ class Profile(models.Model):
 
 
 class PhotoPost(models.Model):
-    name = models.CharField(max_length=100, blank=True)
-    image = models.ImageField(upload_to=get_photo.get_upload_to_post)
+    name = models.CharField(max_length=100, blank=True, null=True)
+    image = models.ImageField(upload_to=get_photo.get_upload_to_post, blank=True, null=True)
 
 
 class Post(models.Model):
