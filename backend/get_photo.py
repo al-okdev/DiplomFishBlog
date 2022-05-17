@@ -10,3 +10,6 @@ def get_upload_to_comment(instance, filename):
 
 def get_upload_to_replycomment(instance, filename):
     return u'images/%s/%s' % (instance.id, filename)
+
+def get_upload_to_shop(instance, filename):
+    return u'images/%s/%s' % (instance.id, filename)

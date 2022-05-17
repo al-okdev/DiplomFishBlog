@@ -68,3 +68,35 @@ class ReplyCommentPost(models.Model):
     date_add = models.DateTimeField(auto_now_add=True)
     date_upd = models.DateTimeField(auto_now=True)
     photo = models.ImageField(upload_to=get_photo.get_upload_to_replycomment, blank=True, null=True)
+
+
+
+STATE_CHOICES = (
+    ('basket', 'Статус корзины'),
+    ('new', 'Новый'),
+    ('confirmed', 'Подтвержден'),
+    ('assembled', 'Собран'),
+    ('sent', 'Отправлен'),
+    ('delivered', 'Доставлен'),
+    ('canceled', 'Отменен'),
+)
+
+class Shop(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Название')
+    url = models.URLField(verbose_name='Ссылка', null=True, blank=True)
+    user = models.OneToOneField(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    state = models.BooleanField(verbose_name='статус получения заказов', default=True)
+    description = models.TextField(verbose_name='Описание', blank=True, null=True)
+    photo = models.ImageField(upload_to=get_photo.get_upload_to_shop, blank=True, null=True)
+    coordinates = models.CharField(max_length=150, verbose_name='Координаты', blank=True, null=True)
+    address = models.CharField(max_length=250, verbose_name='Адрес', blank=True, null=True)
+
+    # filename
+
+    class Meta:
+        verbose_name = 'Магазин'
+        verbose_name_plural = "Список магазинов"
+        ordering = ('-name',)
+
+    def __str__(self):
+        return self.name

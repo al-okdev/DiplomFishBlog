@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a44e70e6-e813-4495-aed6-35d4b9170e49",
+		"_postman_id": "a4dc3a40-fb7c-4317-b792-1f0e116c7b93",
 		"name": "Fish_blog",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -56,7 +56,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"djoser\",\r\n  \"password\": \"1A2b3c4d5E6f7G\"\r\n}"
+							"raw": "{\r\n  \"username\": \"djoser2\",\r\n  \"password\": \"1A2b3c4d5E6f7G\"\r\n}"
 						},
 						"url": {
 							"raw": "http://127.0.0.1:8000/api_v1/auth/token/login/",
@@ -447,12 +447,7 @@
 									"type": "file",
 									"src": "/Y:/Обучение/Netology_2021/Diplom/shema_db.drawio.png"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
 							"raw": "http://127.0.0.1:8000/api_v1/comment/",
@@ -787,6 +782,175 @@
 								"api_v1",
 								"replycomment",
 								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shop",
+			"item": [
+				{
+					"name": "list shop",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/shops",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"shops"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add shop",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Shop1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/shops/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"shops",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update shop",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 46e042d4e3e11dcc279d555e0752041a3dde12a5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Shop33",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "True",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/home/dev/Загрузки/colorful-umbrella-1176220.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/shops/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"shops",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "item shop",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/shops/5/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"shops",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "del shop",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 46e042d4e3e11dcc279d555e0752041a3dde12a5",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/shops/5/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"shops",
+								"5",
 								""
 							]
 						}

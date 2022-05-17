@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.exceptions import ValidationError
 from rest_framework.validators import UniqueValidator
 
-from backend.models import Post, Profile, CommentPost, ReplyCommentPost, PhotoPost
+from backend.models import Post, Profile, CommentPost, ReplyCommentPost, PhotoPost, Shop
 
 User = get_user_model()
 
@@ -93,3 +93,10 @@ class PostSerializer(WritableNestedModelSerializer):
 
         # поля только для чтения
         read_only_fields = ['id', 'user']
+
+
+class ShopSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shop
+        fields = ('id', 'name', 'url', 'state', 'description', 'photo', 'coordinates', 'address',)
+        read_only_fields = ('id',)

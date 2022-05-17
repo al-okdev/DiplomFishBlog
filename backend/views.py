@@ -4,9 +4,10 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 
-from backend.models import Profile, Post, CommentPost, ReplyCommentPost, PhotoPost
+from backend.models import Profile, Post, CommentPost, ReplyCommentPost, PhotoPost, Shop
 from backend.permissions import IsOwnerOrReadOnly, IsOwnerOrReadOnlyProfile
-from backend.serializer import ProfileSerializer, PostSerializer, CommentPostSerializer, ReplyCommentPostSerializer, PhotoPostSerializer
+from backend.serializer import ProfileSerializer, PostSerializer, CommentPostSerializer, ReplyCommentPostSerializer, \
+    PhotoPostSerializer, ShopSerializer
 
 
 class ProfileViewSet(ModelViewSet):
@@ -90,3 +91,19 @@ class ReplyCommentViewSet(ModelViewSet):
         self.perform_update(serializer)
 
         return Response(serializer.data)
+
+
+class ShopViewSet(ModelViewSet):
+    """
+    Класс для просмотра списка магазинов
+    """
+    queryset = Shop.objects.filter(state=True)
+    serializer_class = ShopSerializer
+
+    permission_classes = [IsOwnerOrReadOnly]
+
+    def create(self, request):
+        raise ValidationError('Нельзя создать магазин')
+
+    def destroy(self, request, pk=None):
+        raise ValidationError('Нельзя удалить магазин')
