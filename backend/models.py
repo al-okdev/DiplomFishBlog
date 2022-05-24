@@ -100,3 +100,19 @@ class Shop(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=40, verbose_name='Название')
+    shops = models.ForeignKey(Shop, verbose_name='Магазины', related_name='categories', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to=get_photo.get_upload_to_category, blank=True, null=True)
+    status = models.IntegerField(verbose_name='Статус', choices=STATUS, default=1)
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = "Список категорий"
+        ordering = ('-name',)
+
+    def __str__(self):
+        return self.name

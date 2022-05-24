@@ -4,10 +4,10 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 
-from backend.models import Profile, Post, CommentPost, ReplyCommentPost, PhotoPost, Shop
+from backend.models import Profile, Post, CommentPost, ReplyCommentPost, PhotoPost, Shop, Category
 from backend.permissions import IsOwnerOrReadOnly, IsOwnerOrReadOnlyProfile
 from backend.serializer import ProfileSerializer, PostSerializer, CommentPostSerializer, ReplyCommentPostSerializer, \
-    PhotoPostSerializer, ShopSerializer
+    PhotoPostSerializer, ShopSerializer, CategorySerializer
 
 
 class ProfileViewSet(ModelViewSet):
@@ -107,3 +107,47 @@ class ShopViewSet(ModelViewSet):
 
     def destroy(self, request, pk=None):
         raise ValidationError('Нельзя удалить магазин')
+
+
+class CategoryViewSet(ModelViewSet):
+    """
+    Класс для просмотра списка категорий
+    """
+    queryset = Category.objects.filter(status=1)
+    serializer_class = CategorySerializer
+
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def create(self, request, *args, **kwargs):
+        if not request.data.get('shops'):
+            raise ValidationError('Необходимо передать id магазина')
+        else:
+            user = self.request.user
+            # print(Shop.objects.filter(user=user))
+            if Shop.objects.filter(user=user, id=request.data.get('shops')):
+                serializer = self.get_serializer(data=request.data)
+                serializer.is_valid(raise_exception=True)
+                self.perform_create(serializer)
+                headers = self.get_success_headers(serializer.data)
+                return Response(serializer.data, status=201, headers=headers)
+            else:
+                raise ValidationError('Не верный id магазина')
+
+    def update(self, request, *args, **kwargs):
+        if not request.data.get('shops'):
+            raise ValidationError('Необходимо передать id магазина')
+        else:
+            user = self.request.user
+            # print(Shop.objects.filter(user=user))
+            if Shop.objects.filter(user=user, id=request.data.get('shops')):
+                partial = True
+                instance = self.get_object()
+                serializer = self.get_serializer(instance, data=request.data, partial=partial)
+                serializer.is_valid(raise_exception=True)
+                self.perform_update(serializer)
+                return Response(serializer.data)
+            else:
+                raise ValidationError('Магазин Вам не пренадлежит')
