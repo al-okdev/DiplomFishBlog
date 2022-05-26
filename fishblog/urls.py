@@ -19,7 +19,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from backend.views import ProfileViewSet, PostViewSet, CommentPostViewSet, ReplyCommentViewSet, PhotoPostViewSet, \
-    ShopViewSet, CategoryViewSet
+    ShopViewSet, CategoryViewSet, ProductViewSet
 
 r = DefaultRouter()
 r.register('api_v1/profile', ProfileViewSet) #<int:profile>/
@@ -29,6 +29,7 @@ r.register('api_v1/replycomment', ReplyCommentViewSet)
 r.register('api_v1/photopost', PhotoPostViewSet)
 r.register('api_v1/shops', ShopViewSet)
 r.register('api_v1/categories', CategoryViewSet)
+r.register('api_v1/products', ProductViewSet)
 
 
 urlpatterns = [

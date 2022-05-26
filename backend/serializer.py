@@ -5,7 +5,8 @@ from django.contrib.auth import get_user_model
 from rest_framework.exceptions import ValidationError
 from rest_framework.validators import UniqueValidator
 
-from backend.models import Post, Profile, CommentPost, ReplyCommentPost, PhotoPost, Shop, Category
+from backend.models import Post, Profile, CommentPost, ReplyCommentPost, PhotoPost, Shop, Category, Product, \
+    ProductParameter, ProductInfo
 
 User = get_user_model()
 
@@ -107,3 +108,30 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ('id', 'name', 'shops', 'user', 'photo', 'status',)
         read_only_fields = ('id', 'user',)
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    # category = serializers.StringRelatedField()
+
+    class Meta:
+        model = Product
+        fields = ('name', 'category', 'user', 'photo', 'status')
+        read_only_fields = ('id', 'user',)
+
+
+class ProductParameterSerializer(serializers.ModelSerializer):
+    parameter = serializers.StringRelatedField()
+
+    class Meta:
+        model = ProductParameter
+        fields = ('parameter', 'value',)
+
+
+class ProductInfoSerializer(serializers.ModelSerializer):
+    product = ProductSerializer(read_only=True)
+    product_parameters = ProductParameterSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = ProductInfo
+        fields = ('id', 'model', 'product', 'shop', 'quantity', 'price', 'price_rrc', 'product_parameters',)
+        read_only_fields = ('id',)

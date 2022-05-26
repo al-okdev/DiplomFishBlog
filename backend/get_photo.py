@@ -16,3 +16,6 @@ def get_upload_to_shop(instance, filename):
 
 def get_upload_to_category(instance, filename):
     return u'images/%s/%s' % (instance.id, filename)
+
+def get_upload_to_product(instance, filename):
+    return u'images/%s/%s' % (instance.id, filename)
