@@ -19,7 +19,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from backend.views import ProfileViewSet, PostViewSet, CommentPostViewSet, ReplyCommentViewSet, PhotoPostViewSet, \
-    ShopViewSet, CategoryViewSet, ProductViewSet
+    ShopViewSet, CategoryViewSet, ProductViewSet, BasketViewSet
 
 r = DefaultRouter()
 r.register('api_v1/profile', ProfileViewSet) #<int:profile>/
@@ -37,4 +37,5 @@ urlpatterns = [
     path('api_v1/auth/', include('backend.urls')),
     path('api_v1/auth/', include('djoser.urls')),
     path('api_v1/auth/', include('djoser.urls.authtoken')),
+    path('api_v1/basket/', BasketViewSet.as_view(), name='basket'),
 ] + r.urls

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Profile, Post, PhotoPost, CommentPost, ReplyCommentPost, Shop, Category, Product, ProductInfo, \
-    ProductParameter, Parameter
+    ProductParameter, Parameter, Contact, Order, OrderItem
 
 # Register your models here.
 admin.site.register(Profile)
@@ -31,4 +31,16 @@ class Parameter(admin.ModelAdmin):
 
 @admin.register(ProductParameter)
 class ProductParameter(admin.ModelAdmin):
+    pass
+
+@admin.register(Contact)
+class Contact(admin.ModelAdmin):
+    pass
+
+@admin.register(Order)
+class Order(admin.ModelAdmin):
+    pass
+
+@admin.register(OrderItem)
+class OrderItem(admin.ModelAdmin):
     pass
