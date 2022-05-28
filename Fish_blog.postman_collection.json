@@ -87,7 +87,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 16df3c88ba2bd81db55334aad67e7e517d71f989",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
 								"type": "text"
 							}
 						],
@@ -139,6 +139,153 @@
 								"token",
 								"logout",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"city\": \"Almaty1\",\n\"street\": \"Shashkin street 40\",\n\"house\": \"Apartament 28\",\n\"structure\": \"123\",\n\"building\": \"123\",\n\"apartment\": \"123\",\n\"phone\": \"+49564563242\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/user/contact",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"user",
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update contact",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"4\",\n    \"city\": \"Almaty11\",\n    \"street\": \"Shashkin street 40\",\n    \"house\": \"Apartament 28\",\n    \"structure\": \"123\",\n    \"building\": \"123\",\n    \"apartment\": \"123\",\n    \"phone\": \"+49564563242\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/user/contact",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"user",
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get contact",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/user/contact",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"user",
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "del contact",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\":\"5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/user/contact",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"user",
+								"contact"
 							]
 						}
 					},
@@ -1269,7 +1416,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 46e042d4e3e11dcc279d555e0752041a3dde12a5",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
 								"type": "text"
 							}
 						],
@@ -1278,7 +1425,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Товар2 обновление",
+									"value": "Товар1 обновление",
 									"type": "text"
 								},
 								{
@@ -1306,7 +1453,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api_v1/products/9/",
+							"raw": "http://127.0.0.1:8000/api_v1/products/28/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1318,7 +1465,7 @@
 							"path": [
 								"api_v1",
 								"products",
-								"9",
+								"28",
 								""
 							]
 						}
@@ -1332,12 +1479,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 46e042d4e3e11dcc279d555e0752041a3dde12a5",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api_v1/products/9/",
+							"raw": "http://127.0.0.1:8000/api_v1/products/28/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1349,7 +1496,7 @@
 							"path": [
 								"api_v1",
 								"products",
-								"9",
+								"28",
 								""
 							]
 						}
@@ -1363,12 +1510,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 46e042d4e3e11dcc279d555e0752041a3dde12a5",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api_v1/products/8/",
+							"raw": "http://127.0.0.1:8000/api_v1/products/28/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1380,8 +1527,278 @@
 							"path": [
 								"api_v1",
 								"products",
-								"8",
+								"28",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Basket",
+			"item": [
+				{
+					"name": "basket",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/basket",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"basket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add basket products",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\":[\n        {\n            \"id\": 4,\n            \"product_info\":  9,\n            \"quantity\": 1\n        }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/basket/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"basket",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update basket",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\":[\n        {\n            \"id\": 10,\n            \"quantity\": 2\n        }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/basket/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"basket",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "del basket products",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\": \"10\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/basket/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"basket",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "new order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"4\",\n    \"contact\": \"4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/order",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get order",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/order",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Partner Orders",
+			"item": [
+				{
+					"name": "list order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 2afc54bcf2560402a243fad697ff95f2eecfb8cf",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api_v1/partner/orders",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api_v1",
+								"partner",
+								"orders"
 							]
 						}
 					},
