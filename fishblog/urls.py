@@ -34,9 +34,12 @@ r.register('api_v1/products', ProductViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api_v1/auth/', include('rest_framework_social_oauth2.urls')),
     path('api_v1/auth/', include('backend.urls')),
     path('api_v1/auth/', include('djoser.urls')),
     path('api_v1/auth/', include('djoser.urls.authtoken')),
+    path('api_v1/auth/', include('djoser.urls.jwt')),
+    path('api_v1/login/vk-oauth2', include('djoser.social.urls')),
     path('api_v1/basket/', BasketViewSet.as_view(), name='basket'),
     path('api_v1/user/contact', ContactView.as_view(), name='user-contact'),
     path('api_v1/order', OrderView.as_view(), name='order'),
